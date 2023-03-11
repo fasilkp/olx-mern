@@ -74,5 +74,21 @@ export const userLogout = async (req, res) => {
     }).json({ message: "logged out", error: false });
 }
 
+export const checkUserLoggedIn = async (req, res) => {
+    try {
+        const token = req.cookies.token;
+        if (!token)
+            return res.json({ loggedIn: false, error: true, message: "no token" });
 
+        const verifiedJWT = jwt.verify(token, "myjwtsecretkey");
+        const user = await UserModel.findById(verifiedJWT.id, { password: 0 });
+        if (!user) {
+            return res.json({ loggedIn: false });
+        }
+        return res.json({ user, loggedIn: true });
+    } catch (err) {
+        console.log(err)
+        res.json({ loggedIn: false, error: err });
+    }
+}
 
