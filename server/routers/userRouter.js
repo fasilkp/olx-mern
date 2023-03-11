@@ -22,8 +22,8 @@ router.post("/register", userRegister)
 router.post("/login", userLogin)
 router.post('/add-product', upload.single('image'), addProduct )
 router.get('/products', getProducts )
-router.get('/product/:id', getProduct )
 router.get("/logout", userLogout)
+router.get('/product/:id', getProduct )
 router.get("/check-auth", checkUserLoggedIn)
 
 export default router
