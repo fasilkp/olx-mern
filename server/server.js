@@ -4,7 +4,6 @@ import cors from 'cors'
 import dbConnect from "./config/dbConnect.js"
 import cookieParser from 'cookie-parser';
 import userRouter from './routers/userRouter.js'
-import adminRouter from './routers/adminRouter.js'
 import path from 'path'
 
 const app=express();
@@ -24,7 +23,6 @@ app.use(
 dbConnect();
 
 app.use('/',userRouter)
-app.use('/admin',adminRouter)
 
 app.listen(5000, ()=>{
     console.log("server running on port 5000")

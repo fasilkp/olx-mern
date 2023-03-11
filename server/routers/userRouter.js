@@ -1,5 +1,6 @@
 import express from 'express';
-// import multer from 'multer'
+import { checkUserLoggedIn, userLogin, userLogout, userRegister } from '../controllers/userController.js'
+import multer from 'multer'
 const router=express.Router();
 
 // const storage = multer.diskStorage({
@@ -16,5 +17,9 @@ const router=express.Router();
 
 
 router.get("/", (req, res)=>{res.json("hai")})
+router.post("/register", userRegister)
+router.post("/login", userLogin)
+router.get("/logout", userLogout)
+router.get("/check-auth", checkUserLoggedIn)
 
 export default router
