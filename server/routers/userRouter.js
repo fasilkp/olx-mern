@@ -1,7 +1,7 @@
 import express from 'express';
 import { checkUserLoggedIn, userLogin, userLogout, userRegister } from '../controllers/userController.js'
 import multer from 'multer'
-import { addProduct } from '../controllers/productController.js';
+import { addProduct, getProduct, getProducts } from '../controllers/productController.js';
 const router=express.Router();
 
 const storage = multer.diskStorage({
@@ -21,6 +21,8 @@ router.get("/", (req, res)=>{res.json("hai")})
 router.post("/register", userRegister)
 router.post("/login", userLogin)
 router.post('/add-product', upload.single('image'), addProduct )
+router.get('/products', getProducts )
+router.get('/product/:id', getProduct )
 router.get("/logout", userLogout)
 router.get("/check-auth", checkUserLoggedIn)
 

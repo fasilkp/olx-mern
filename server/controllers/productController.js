@@ -10,3 +10,21 @@ export const addProduct=async (req, res)=>{
     }
 }
 
+export const getProducts=async (req, res)=>{
+    try{
+        let products = await productModel.find().lean()
+        res.json({error:false, products})
+    }catch(err){
+        res.json({error:true, err, message:"something went wrong"})
+    }
+}
+
+export const getProduct=async (req, res)=>{
+    try{
+        let product = await productModel.findById(req.params.id)
+        res.json({error:false, product})
+    }catch(err){
+        res.json({error:true, err, message:"something went wrong"})
+    }
+}
+
