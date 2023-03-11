@@ -7,13 +7,13 @@ var salt = bcrypt.genSaltSync(10);
 
 export async function userRegister(req, res) {
     try {
-        const { name, email, password, about, proffession } = req.body;
+        const { name, email, password, mobile } = req.body;
         const hashPassword = bcrypt.hashSync(password, salt);
         const user = await UserModel.findOne({ email });
         if (user) {
             return res.json({ error: true, message: "User Already Exist" })
         }
-        const newUser = new UserModel({ name, email, password: hashPassword, about, proffession })
+        const newUser = new UserModel({ name, email, password: hashPassword, mobile })
         await newUser.save();
         console.log(newUser)
         const token = jwt.sign(
