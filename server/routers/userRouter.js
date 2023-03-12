@@ -1,7 +1,7 @@
 import express from 'express';
 import { checkUserLoggedIn, userLogin, userLogout, userRegister } from '../controllers/userController.js'
 import multer from 'multer'
-import { addProduct, getProduct, getProducts } from '../controllers/productController.js';
+import { addProduct, getCategories, getProduct, getProducts } from '../controllers/productController.js';
 const router=express.Router();
 
 const storage = multer.diskStorage({
@@ -25,5 +25,6 @@ router.get('/products', getProducts )
 router.get("/logout", userLogout)
 router.get('/product/:id', getProduct )
 router.get("/check-auth", checkUserLoggedIn)
+router.get("/categories", getCategories)
 
 export default router
