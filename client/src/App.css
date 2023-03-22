@@ -1,0 +1,19 @@
+button:disabled{
+    opacity: 60%;
+}
+body{
+    width: 100vw;
+    overflow-x: hidden;
+    background-color: #F2F4F4 !important;
+}
+.dropdownBtnEmpty{
+    background: none !important;
+    border: none !important;
+    outline: none !important;
+    color: black !important;
+    box-shadow: none !important;
+
+}
+a{
+    all:unset !important;
+}
